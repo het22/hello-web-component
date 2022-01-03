@@ -35,19 +35,21 @@
       constructor() {
         super();
 
+        var shadow = this.attachShadow({ mode: 'open' });
+
         var titleElement = document.createElement('h3');
         titleElement.innerText = this.getAttribute('title');
-        this.appendChild(titleElement);
+        shadow.appendChild(titleElement);
 
         var authorElement = document.createElement('address');
         authorElement.innerText = this.getAttribute('author');
-        this.appendChild(authorElement);
+        shadow.appendChild(authorElement);
 
         var dateElement = document.createElement('time');
         var date = this.getAttribute('date');
         dateElement.dateTime = date;
         dateElement.innerText = date;
-        this.appendChild(dateElement);
+        shadow.appendChild(dateElement);
       }
     }
     customElements.define('movie-card', MovieCard);

@@ -6,22 +6,50 @@
         <h2>My Favorite Movies</h2>
         <ul>
           <li>
-            <h3>12 Angry Men</h3>
-            <address>Sidney Lumet</address>
-            <time datetime="1957">1957</time>
+            <movie-card
+              title="12 Angry Men"
+              author="Sidney Lumet"
+              date="1957"
+            />
           </li>
           <li>
-            <h3>Princess Mononoke</h3>
-            <address>Miyazaki Hayao</address>
-            <time datetime="1997">1997</time>
+            <movie-card
+              title="Princess Mononoke"
+              author="Miyazaki Hayao"
+              date="1997"
+            />
           </li>
           <li>
-            <h3>Dances with Wolves</h3>
-            <address>Kevin Costner</address>
-            <time datetime="1990">1990</time>
+            <movie-card
+              title="Dances with Wolves"
+              author="Kevin Costner"
+              date="1990"
+            />
           </li>
         </ul>
       </section>
     </main>
   </body>
+  <script>
+    class MovieCard extends HTMLElement {
+      constructor() {
+        super();
+
+        var titleElement = document.createElement('h3');
+        titleElement.innerText = this.getAttribute('title');
+        this.appendChild(titleElement);
+
+        var authorElement = document.createElement('address');
+        authorElement.innerText = this.getAttribute('author');
+        this.appendChild(authorElement);
+
+        var dateElement = document.createElement('time');
+        var date = this.getAttribute('date');
+        dateElement.dateTime = date;
+        dateElement.innerText = date;
+        this.appendChild(dateElement);
+      }
+    }
+    customElements.define('movie-card', MovieCard);
+  </script>
 </html>
